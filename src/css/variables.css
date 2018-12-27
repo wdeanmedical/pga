@@ -1,0 +1,173 @@
+
+:root {
+  --appHorizontalPadding: 40px;
+
+  /* FONTS */
+
+  --gap: 20px;
+
+  --spaceWidth: 0.4em;
+
+  --font60: 3.75rem;
+
+  --font44: 2.75rem;
+
+  --font30: 1.875rem;
+
+  --font32: 2rem;
+
+  --font26: 1.625rem;
+
+  --font22: 1.375rem;
+
+  --font20: 1.25rem;
+
+  --font18: 1.125rem;
+
+  --font16: 1rem; /* base */
+
+  --font14: 0.875rem;
+
+  --font12: 0.75rem;
+
+  --font10: 0.625rem;
+
+
+  /* SPACING */
+
+  --space48: 3rem;
+
+  --space40: 2.5rem;
+
+  --space32: 2rem;
+
+  --space24: 1.5rem;
+
+  --space16: 1rem;
+
+  --space8: 0.5rem;
+
+
+  --darkPrimaryColor: #164794;
+
+  --lightPrimaryColor: #0073c4;
+
+  --lighterPrimaryColor: #e4eefc;
+
+  --lightSecondaryColor: #f7fcf8;
+
+  --veryLightGrey: #f7f7f7;
+
+  --lightestNeutralColor: #f0f0f0;
+
+  --lighterNeutralColor: #c0c0c0;
+
+  --lightNeutralColor: #767676;
+
+  --darkNeutralColor: #343434;
+
+  --alertColor: #c41616;
+
+  --primaryMessageColor: var(--darkPrimaryColor);
+
+  --affirmativeMessageColor: #008627;
+
+  --reverseColor: white;
+
+  --chartColor1: var(--darkPrimaryColor);
+
+  --chartColor2: var(--alertColor);
+
+  --chartColor3: var(--affirmativeMessageColor);
+
+  --chartColor4: var(--lightPrimaryColor);
+
+  --chartColor5: #f0cb00;
+
+  --correctColor: #e8f4f0;
+
+  --incorrectColor: #feeff2;
+
+  --warningPrompt: var(--chartColor5);
+
+  --negativeProgressColor: var(--alertColor);
+
+  --neutralProgressColor: var(--chartColor5);
+
+  --positiveProgressColor: var(--affirmativeMessageColor);
+
+  --headerBackgroundColor: var(--lightSecondaryColor);
+
+  --navOnHoverColor: var(--reverseColor);
+
+  --blueGradient: linear-gradient(45deg, rgba(0, 39, 80, 0.76), rgba(0, 0, 0, 0.76));
+
+  --grayGradient: linear-gradient(120deg, #c0c0c0, #e7e7e7, #fff, #f0f0f0, #dcdcdc);
+
+  --tableline: #e0e0e0;
+
+
+  --hover: 0.1s all ease-in;
+
+  /* DROP SHADOWS */
+
+  --shallowShadow: 0 0 3px 0 rgba(0, 0, 0, 0.13);
+
+  --mediumShadow: 0 0 2px 0 rgba(0, 0, 0, 0.18), 0 2px 3px 0 rgba(0, 0, 0, 0.08);
+
+  --deepShadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.13);
+
+  --leftDeepShadow: 3px 2px 7px 0 rgba(0, 0, 0, 0.2), 3px 1px 4px 0 rgba(0, 0, 0, 0.13);
+
+  --rightDeepShadow: -3px 2px 7px 0 rgba(0, 0, 0, 0.2), -3px 1px 4px 0 rgba(0, 0, 0, 0.13);
+
+  --deeperShadow: 0 2px 11px 0 rgba(0, 0, 0, 0.4), 0 1px 4px 0 rgba(0, 0, 0, 0.13);
+
+  --calendarTextShadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+  --modalShadow: 0 17px 30px 0 rgba(0, 0, 0, 0.19), 0 5px 15px 0 rgba(0, 0, 0, 0.24);
+
+  --tooltipShadow: 0 1px 8px 0 rgba(0, 0, 0, 0.25);
+
+  --focusOutline: 0 0 0 1px var(--reverseColor), 0 0 0 2px var(--lightPrimaryColor);
+
+  --thinFocusOutline: inset 0 0 0 1px white;
+
+  --reverseFocusOutline: 0 0 0 1px var(--darkNeutralColor), 0 0 0 2px var(--reverseColor);
+
+  --simpleFocusOutline: 0 0 5px var(--lightPrimaryColor);
+
+  --okOutline: 0 0 5px 1px var(--affirmativeMessageColor);
+
+  --translucentHighlight: inset 0 0 0 2em rgba(0, 0, 0, 0.1);
+
+  /* z-index variables */
+  --zAboveAll: 9999;
+
+  --paleGrey: rgb(252, 252, 253);
+
+  --cardBorderColor: rgba(206, 209, 217, 0.24);
+
+  --cardBorderRadius: 10px;
+
+  --cardShadow: 0 12px 16px 0 rgba(50, 62, 99, 0.03);
+
+  --dividerColor: #e0e0e0;
+
+  --battleshipGrey: rgb(112, 118, 137);
+
+  --ambiBlack: rgb(29, 33, 41);
+
+  --inputPlaceholderColor: rgb(154, 162, 189);
+
+  --textInputBorderColor: rgb(206, 209, 217);
+
+  --ambiAzureColor: rgb(2, 158, 226);
+
+  --ambiErrorColor: rgb(237, 30, 122);
+
+  --textInputDisabledBackground: rgb(247, 247, 250);
+
+  --buttonDisabledBackground: rgb(206, 209, 217);
+
+}

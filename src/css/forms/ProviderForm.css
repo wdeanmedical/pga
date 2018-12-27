@@ -1,0 +1,119 @@
+.root {
+  width: 480px;
+  background-color: white;
+  border-width: 2px;
+  border-radius: var(--cardBorderRadius);
+  border-color:var(--cardBorderColor);
+  box-shadow: var(--cardShadow);
+  padding: 20px;
+}
+
+.formItem {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.formItemWithMessage {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.formItemLabel {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-left: 8px;
+}
+
+.formItemInput {
+  width: 95%;
+  font-size: 14px;
+  color: var(--ambiBlack);
+  height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--textInputBorderColor);
+}
+
+.formItemInputError {
+  border: 1px solid var(--ambiErrorColor);
+}
+
+input::placeholder {
+  color: var(--inputPlaceholderColor);
+  font-size: 14px;
+}
+
+input[type="text"]:hover{
+ border: 1px solid var(--ambiAzureColor);
+}
+
+input[type="text"]:focus{
+  border: 1px solid var(--ambiAzureColor);
+}
+
+input[type="text"]:disabled {
+  border: 1px solid var(--textInputBorderColor);
+  background: var(--textInputDisabledBackground);
+  color: var(--battleshipGrey);
+}
+
+.formSubmitButton:disabled {
+  border: 1px solid var(--textInputBorderColor);
+  color: var(--battleshipGrey);
+  background: var(--buttonDisabledBackground);
+}
+
+.formControls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.formSubmitButton {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 12px;
+  color: white;
+  padding: 5px 50px 5px 50px;
+  background-color: var(--ambiAzureColor);
+  border-radius: 8px;
+}
+
+.title {
+  font-family: 'Arial-Black', sans-serif ;
+  font-size: 16px;
+  color: var(--ambiBlack)
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-bottom: 10px;
+}
+
+.ambiResponse {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ambiResponseTitle {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-left: 8px;
+}
+
+.ambiResponseIcons {
+  display: flex;
+  justify-content: space-between;
+  width: 65px;
+  margin-right: 10px;
+}
+
+.errorMessage {
+  text-align: right;
+  font-size: 12px;
+  color: var(--ambiErrorColor);
+  min-height: 18px;
+}
+

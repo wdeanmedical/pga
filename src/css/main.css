@@ -1,0 +1,21 @@
+@import "./variables.css";
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--paleGrey);
+}
+
+body,
+input,
+textarea,
+keygen,
+select,
+button {
+    font-family: 'ArialMT', sans-serif ;
+    line-height: 1.5;
+}
+
+

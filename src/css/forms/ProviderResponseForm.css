@@ -1,0 +1,79 @@
+.root {
+  width: 300px;
+  background-color: white;
+  border-width: 2px;
+  border-radius: var(--cardBorderRadius);
+  border-color:var(--cardBorderColor);
+  box-shadow: var(--cardShadow);
+  padding: 20px;
+}
+
+.title {
+  font-family: 'Arial-Black', sans-serif ;
+  font-size: 16px;
+  color: var(--ambiBlack);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.providerResponse {
+  margin-left: 20px;
+}
+
+.providerResponseTitle {
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-top: 13px;
+  margin-bottom: 18px;
+}
+
+.providerResponseItem {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 14px;
+  color: var(--ambiBlack);
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.responseForm {
+  margin-left: 20px;
+}
+
+.responseControlTitle {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 13px;
+  color: var(--battleshipGrey);
+  margin-top: 15px;
+}
+
+.responseControls {
+  display: flex;
+  justify-content: space-between;
+  width: 75px;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.acceptButton:hover {
+  content:url("../../assets/images/thumbs-up-button-hover.png");
+  cursor: pointer;
+}
+
+.acceptButtonSubmitted {
+  content:url("../../assets/images/thumbs-up-button-submitted.png");
+}
+
+.rejectButton:hover {
+  content:url("../../assets/images/thumbs-down-button-hover.png");
+  cursor: pointer;
+}
+
+.rejectButtonSubmitted {
+  content:url("../../assets/images/thumbs-down-button-submitted.png");
+}

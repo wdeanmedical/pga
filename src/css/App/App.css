@@ -1,0 +1,17 @@
+@import "../variables.css";
+
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 500px;
+  width: 900px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.screenDivider {
+  height: 100%;
+  width: 1px;
+  background-color: var(--dividerColor);
+}
