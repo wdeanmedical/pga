@@ -1,2 +1,2 @@
-export const ACCEPT = 'accept'
-export const REJECT = 'reject'
+export const ADD = 'add'
+export const EDIT = 'edit'

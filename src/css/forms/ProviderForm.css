@@ -59,12 +59,6 @@ input[type="text"]:disabled {
   color: var(--battleshipGrey);
 }
 
-.formSubmitButton:disabled {
-  border: 1px solid var(--textInputBorderColor);
-  color: var(--battleshipGrey);
-  background: var(--buttonDisabledBackground);
-}
-
 .formControls {
   display: flex;
   justify-content: flex-end;
@@ -75,20 +69,25 @@ input[type="text"]:disabled {
   font-family: 'Arial-BoldMT', sans-serif ;
   font-size: 12px;
   color: white;
-  padding: 5px 50px 5px 50px;
+  padding: 5px 25px 5px 25px;
   background-color: var(--ambiAzureColor);
   border-radius: 8px;
+}
+
+.formDeleteButton {
+  font-family: 'Arial-BoldMT', sans-serif ;
+  font-size: 12px;
+  color: white;
+  padding: 5px 25px 5px 25px;
+  background-color: var(--ambiErrorColor);
+  border-radius: 8px;
+  margin-right: 5px;
 }
 
 .title {
   font-family: 'Arial-Black', sans-serif ;
   font-size: 16px;
-  color: var(--ambiBlack)
-}
-
-.subtitle {
-  font-size: 13px;
-  color: var(--battleshipGrey);
+  color: var(--ambiBlack);
   margin-bottom: 10px;
 }
 

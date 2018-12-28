@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as actions from '../actions'
+import * as Constants from '../constants/constants'
 import styles from '../css/forms/ProviderForm.css'
 
 class ProviderForm extends Component {
   state = {
-    message: 'enter player details:',
-    title: 'add player',
+    formMode: Constants.ADD,
     errors: {},
   }
 
@@ -49,8 +49,8 @@ class ProviderForm extends Component {
 
   submitForm = () => {
     const providerResponse = {
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
+      firstName: this.firstName.value.trim(),
+      lastName: this.lastName.value.trim(),
       score: +this.score.value,
     }
     const { sendProviderResponse } = this.props
@@ -61,16 +61,12 @@ class ProviderForm extends Component {
       this.firstName.value = ''
       this.lastName.value = ''
       this.score.value = ''
-
-      this.setState({
-        title: 'player added',
-        message: '',
-      })
     }
   }
 
   render() {
     const { ambiResponse } = this.props
+    const { formMode, errors } = this.state
 
     if (Object.keys(ambiResponse).length > 0) {
       this.firstName.value = ambiResponse.firstName
@@ -78,15 +74,12 @@ class ProviderForm extends Component {
       this.score.value = +ambiResponse.score
     }
 
-    const { title, message, errors } = this.state
-
     console.log(`render() - this.props: ${JSON.stringify(this.props)}`)
     console.log(`render() - ambiResponse: ${JSON.stringify(ambiResponse)}`)
 
     return (
       <div className={styles.root}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.subtitle}>{message}</div>
+        <div className={styles.title}>{formMode} player</div>
         <div className={styles.formItemWithMessage}>
           <div className={styles.formItemLabel}>first name:</div>
           <input
@@ -122,6 +115,14 @@ class ProviderForm extends Component {
         </div>
 
         <div className={styles.formControls}>
+          {formMode === Constants.EDIT && (
+            <button
+              className={styles.formDeleteButton}
+              onClick={this.deletePlayer}
+            >
+              Delete
+            </button>
+          )}
           <button className={styles.formSubmitButton} onClick={this.submitForm}>
             Submit
           </button>
