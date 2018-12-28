@@ -70,7 +70,12 @@ class ProviderForm extends Component {
   }
 
   render() {
+    const { ambiResponse } = this.props
     const { title, message, firstName, lastName, score, errors } = this.state
+
+    console.log(`render() - this.props: ${JSON.stringify(this.props)}`)
+    console.log(`render() - ambiResponse: ${JSON.stringify(ambiResponse)}`)
+
     return (
       <div className={styles.root}>
         <div className={styles.title}>{title}</div>
@@ -123,16 +128,19 @@ class ProviderForm extends Component {
 
 const mapStateToProps = state => {
   const { ambiResponse } = state.app
-  return ambiResponse || {}
+  console.log('mapStateToProps ambiResponse', ambiResponse)
+  if (Object.keys(ambiResponse).length > 0) {
+  }
+  return { ambiResponse }
 }
 
 ProviderForm.propTypes = {
-  ambiResponse: PropTypes.string,
+  ambiResponse: PropTypes.object,
   sendProviderResponse: PropTypes.func,
 }
 
 ProviderForm.defaultProps = {
-  ambiResponse: null,
+  ambiResponse: {},
   sendProviderResponse: undefined,
 }
 

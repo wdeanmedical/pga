@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import * as actions from '../actions'
 import styles from '../css/forms/ProviderResponseForm.css'
+import * as actions from '../actions'
 
 class ProviderResponseForm extends Component {
   state = {}
 
   componentDidMount() {}
+
+  handleRowClick = row => {
+    const { sendAmbiResponse } = this.props
+    console.log('row', row)
+    sendAmbiResponse(row)
+  }
 
   render() {
     const { leaderboard } = this.props
@@ -27,7 +33,7 @@ class ProviderResponseForm extends Component {
             </thead>
             <tbody>
               {leaderboard.map(row => (
-                <tr>
+                <tr key={row.id} onClick={() => this.handleRowClick(row)}>
                   <td className={styles.name}>
                     {row.lastName}, {row.firstName}
                   </td>
@@ -49,10 +55,12 @@ const mapStateToProps = state => {
 
 ProviderResponseForm.propTypes = {
   leaderboard: PropTypes.arrayOf(PropTypes.object),
+  sendAmbiResponse: PropTypes.func,
 }
 
 ProviderResponseForm.defaultProps = {
   leaderboard: [],
+  sendAmbiResponse: undefined,
 }
 
 export default connect(

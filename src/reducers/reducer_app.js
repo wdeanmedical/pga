@@ -5,14 +5,16 @@ import {
 
 const INITIAL_STATE = {
   providerResponse: null,
-  ambiResponse: null,
+  ambiResponse: {},
   leaderboard: [],
+  sequenceNumber: 1,
 }
 
 const addToLeaderboard = (state, action) => {
   const { firstName, lastName, score } = action.payload
-  const sortedLeaderboard = state.leaderboard
-  sortedLeaderboard.push({ firstName, lastName, score })
+  const { leaderboard, sequenceNumber } = state
+  const sortedLeaderboard = leaderboard
+  sortedLeaderboard.push({ id: sequenceNumber, firstName, lastName, score })
   const scoreComparison = (a, b) => {
     if (a.score < b.score) {
       return -1
@@ -34,6 +36,7 @@ const addToLeaderboard = (state, action) => {
   console.log('sortedLeaderboard', sortedLeaderboard)
   return {
     ...state,
+    sequenceNumber: sequenceNumber + 1,
     leaderboard: sortedLeaderboard,
     providerResponse: { updateTime: new Date() },
   }
@@ -44,6 +47,7 @@ export default function(state = INITIAL_STATE, action) {
     case PROVIDER_RESPONSE_SUCCESS:
       return addToLeaderboard(state, action)
     case AMBI_RESPONSE_SUCCESS:
+      console.log('action payload', action.payload)
       return { ...state, ambiResponse: action.payload }
     default:
       return state
