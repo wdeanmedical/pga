@@ -58,13 +58,10 @@ class ProviderForm extends Component {
 
     if (this.validateForm()) {
       if (formMode === Constants.ADD) {
-        console.log(`submitForm() addPlayer(${JSON.stringify(player)})`)
         addPlayer(player)
       } else if (formMode === Constants.EDIT) {
-        console.log(`submitForm() updatePlayer(${JSON.stringify(player)})`)
         updatePlayer(player)
       }
-
       this.firstName.value = ''
       this.lastName.value = ''
       this.score.value = ''
@@ -73,22 +70,21 @@ class ProviderForm extends Component {
 
   deletePlayer = () => {
     const { deletePlayer } = this.props
-    console.log(`deletePlayer(${this.props.player.id})`)
     deletePlayer(this.props.player.id)
+    this.firstName.value = ''
+    this.lastName.value = ''
+    this.score.value = ''
   }
 
   render() {
     const { player, formMode } = this.props
     const { errors } = this.state
 
-    if (Object.keys(player).length > 0) {
+    if (Object.keys(player).length > 0 && formMode === Constants.EDIT) {
       this.firstName.value = player.firstName
       this.lastName.value = player.lastName
       this.score.value = +player.score
     }
-
-    console.log(`render() - this.props: ${JSON.stringify(this.props)}`)
-    console.log(`render() - player: ${JSON.stringify(player)}`)
 
     return (
       <div className={styles.root}>
@@ -100,6 +96,7 @@ class ProviderForm extends Component {
             maxLength="30"
             className={styles.formItemInput}
             placeholder="enter first name"
+            defaultValue=""
             ref={input => (this.firstName = input)}
           />
           <div className={styles.errorMessage}>{errors.firstName}</div>
@@ -111,6 +108,7 @@ class ProviderForm extends Component {
             maxLength="30"
             className={styles.formItemInput}
             placeholder="enter last name"
+            defaultValue=""
             ref={input => (this.lastName = input)}
           />
           <div className={styles.errorMessage}>{errors.lastName}</div>
@@ -121,6 +119,7 @@ class ProviderForm extends Component {
             type="text"
             className={styles.formItemInput}
             placeholder="enter score (1-100)"
+            defaultValue=""
             ref={input => (this.score = input)}
             onChange={e => this.processScoreInput(e)}
           />
@@ -147,8 +146,6 @@ class ProviderForm extends Component {
 
 const mapStateToProps = state => {
   const { player, formMode } = state.app
-  console.log('mapStateToProps formMode', formMode)
-  console.log('mapStateToProps player', player)
   return { player, formMode }
 }
 

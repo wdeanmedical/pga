@@ -11,7 +11,6 @@ class ProviderResponseForm extends Component {
 
   handleRowClick = row => {
     const { editPlayer } = this.props
-    console.log('row', row)
     editPlayer(row)
   }
 

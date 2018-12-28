@@ -33,13 +33,11 @@ const scoreComparison = (a, b) => {
 }
 
 const addToLeaderboard = (state, action) => {
-  console.log(`reducer  addToLeaderboard() ${JSON.stringify(action.payload)})`)
   const { firstName, lastName, score } = action.payload
   const { leaderboard, sequenceNumber } = state
   const sortedLeaderboard = leaderboard
   sortedLeaderboard.push({ id: sequenceNumber, firstName, lastName, score })
   sortedLeaderboard.sort(scoreComparison)
-  console.log('sortedLeaderboard', sortedLeaderboard)
   return {
     ...state,
     sequenceNumber: sequenceNumber + 1,
@@ -49,10 +47,10 @@ const addToLeaderboard = (state, action) => {
 }
 
 const updateLeaderboard = (state, action) => {
-  console.log(`reducer  updateLeaderboard() ${JSON.stringify(action.payload)})`)
   const { firstName, lastName, score, id } = action.payload
   const { leaderboard } = state
   const updatedLeaderboard = leaderboard
+
   updatedLeaderboard.find((o, i) => {
     if (o.id === id) {
       updatedLeaderboard[i] = { firstName, lastName, score }
@@ -60,7 +58,6 @@ const updateLeaderboard = (state, action) => {
   })
   updatedLeaderboard.sort(scoreComparison)
 
-  console.log('updatedLeaderboard', updatedLeaderboard)
   return {
     ...state,
     formMode: Constants.ADD,
@@ -70,19 +67,15 @@ const updateLeaderboard = (state, action) => {
 }
 
 const deleteFromLeaderboard = (state, action) => {
-  console.log(
-    `reducer  deleteFromLeaderboard(${JSON.stringify(action.payload)})`
-  )
   const id = action.payload
   const { leaderboard } = state
   const updatedLeaderboard = leaderboard
   updatedLeaderboard.find((o, i) => {
-    if (o.id === id) {
-      updatedLeaderboard.splice(id, 1)
+    if (o && o.id === id) {
+      updatedLeaderboard.splice(i, 1)
     }
   })
 
-  console.log('updatedLeaderboard', updatedLeaderboard)
   return {
     ...state,
     formMode: Constants.ADD,
@@ -100,7 +93,6 @@ export default function(state = INITIAL_STATE, action) {
     case ADD_PLAYER_SUCCESS:
       return addToLeaderboard(state, action)
     case EDIT_PLAYER_SUCCESS:
-      console.log('action payload', action.payload)
       return {
         ...state,
         player: action.payload,

@@ -6,7 +6,6 @@ import {
 } from './types'
 
 export function addPlayer(newPlayer) {
-  console.log(`action  addPlayer(${JSON.stringify(newPlayer)})`)
   return {
     type: ADD_PLAYER_SUCCESS,
     payload: newPlayer,
@@ -14,7 +13,6 @@ export function addPlayer(newPlayer) {
 }
 
 export function editPlayer(player) {
-  console.log(`action  editPlayer(${JSON.stringify(player)})`)
   return {
     type: EDIT_PLAYER_SUCCESS,
     payload: player,
