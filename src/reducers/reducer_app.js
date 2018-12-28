@@ -69,12 +69,34 @@ const updateLeaderboard = (state, action) => {
   }
 }
 
+const deleteFromLeaderboard = (state, action) => {
+  console.log(
+    `reducer  deleteFromLeaderboard(${JSON.stringify(action.payload)})`
+  )
+  const id = action.payload
+  const { leaderboard } = state
+  const updatedLeaderboard = leaderboard
+  updatedLeaderboard.find((o, i) => {
+    if (o.id === id) {
+      updatedLeaderboard.splice(id, 1)
+    }
+  })
+
+  console.log('updatedLeaderboard', updatedLeaderboard)
+  return {
+    ...state,
+    formMode: Constants.ADD,
+    leaderboard: updatedLeaderboard,
+    updateTime: { updateTime: new Date() },
+  }
+}
+
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case UPDATE_PLAYER_SUCCESS:
       return updateLeaderboard(state, action)
     case DELETE_PLAYER_SUCCESS:
-      return state
+      return deleteFromLeaderboard(state, action)
     case ADD_PLAYER_SUCCESS:
       return addToLeaderboard(state, action)
     case EDIT_PLAYER_SUCCESS:

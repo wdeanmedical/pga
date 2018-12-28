@@ -71,6 +71,12 @@ class ProviderForm extends Component {
     }
   }
 
+  deletePlayer = () => {
+    const { deletePlayer } = this.props
+    console.log(`deletePlayer(${this.props.player.id})`)
+    deletePlayer(this.props.player.id)
+  }
+
   render() {
     const { player, formMode } = this.props
     const { errors } = this.state
@@ -150,6 +156,7 @@ ProviderForm.propTypes = {
   formMode: PropTypes.string,
   player: PropTypes.object,
   addPlayer: PropTypes.func,
+  deletePlayer: PropTypes.func,
   updatePlayer: PropTypes.func,
 }
 
@@ -157,6 +164,7 @@ ProviderForm.defaultProps = {
   formMode: Constants.ADD,
   player: {},
   addPlayer: undefined,
+  deletePlayer: undefined,
   updatePlayer: undefined,
 }
 
