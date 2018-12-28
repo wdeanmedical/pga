@@ -7,7 +7,6 @@ import styles from '../css/forms/ProviderForm.css'
 
 class ProviderForm extends Component {
   state = {
-    formMode: Constants.ADD,
     errors: {},
   }
 
@@ -65,8 +64,8 @@ class ProviderForm extends Component {
   }
 
   render() {
-    const { ambiResponse } = this.props
-    const { formMode, errors } = this.state
+    const { ambiResponse, formMode } = this.props
+    const { errors } = this.state
 
     if (Object.keys(ambiResponse).length > 0) {
       this.firstName.value = ambiResponse.firstName
@@ -133,17 +132,19 @@ class ProviderForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { ambiResponse } = state.app
-  console.log('mapStateToProps ambiResponse', ambiResponse)
-  return { ambiResponse }
+  const { ambiResponse, formMode } = state.app
+  console.log('mapStateToProps formMode', formMode)
+  return { ambiResponse, formMode }
 }
 
 ProviderForm.propTypes = {
+  formMode: PropTypes.string,
   ambiResponse: PropTypes.object,
   sendProviderResponse: PropTypes.func,
 }
 
 ProviderForm.defaultProps = {
+  formMode: Constants.ADD,
   ambiResponse: {},
   sendProviderResponse: undefined,
 }

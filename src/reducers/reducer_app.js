@@ -1,3 +1,4 @@
+import * as Constants from '../constants/constants'
 import {
   PROVIDER_RESPONSE_SUCCESS,
   AMBI_RESPONSE_SUCCESS,
@@ -10,6 +11,7 @@ const INITIAL_STATE = {
   ambiResponse: {},
   leaderboard: [],
   sequenceNumber: 1,
+  formMode: Constants.ADD,
 }
 
 const addToLeaderboard = (state, action) => {
@@ -54,7 +56,11 @@ export default function(state = INITIAL_STATE, action) {
       return addToLeaderboard(state, action)
     case AMBI_RESPONSE_SUCCESS:
       console.log('action payload', action.payload)
-      return { ...state, ambiResponse: action.payload }
+      return {
+        ...state,
+        ambiResponse: action.payload,
+        formMode: Constants.EDIT,
+      }
     default:
       return state
   }
