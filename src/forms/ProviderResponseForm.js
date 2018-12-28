@@ -20,8 +20,10 @@ class ProviderResponseForm extends Component {
         {leaderboard.length > 0 && (
           <table>
             <thead>
-              <th className={styles.th}>name</th>
-              <th className={styles.th}>score</th>
+              <tr>
+                <th className={styles.th}>name</th>
+                <th className={styles.th}>score</th>
+              </tr>
             </thead>
             <tbody>
               {leaderboard.map(row => (

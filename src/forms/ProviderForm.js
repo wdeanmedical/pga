@@ -60,6 +60,9 @@ class ProviderForm extends Component {
     if (this.validateForm()) {
       sendProviderResponse(providerResponse)
       this.setState({
+        firstName: '',
+        lastName: '',
+        score: '',
         title: 'player added',
         message: '',
       })

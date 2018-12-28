@@ -80,6 +80,7 @@
 
 .th {
   text-align: left;
+  padding-left: 2px;
 }
 
 .name {
@@ -90,6 +91,21 @@
   text-align: right;
 }
 
+table, th, td
+{
+  border-collapse: separate;
+  border-spacing:0px;
+  border-width:0;
+  background-color:White;
+}
+
 th, td {
+  padding-left: 2px;
   padding-right: 20px;
+}
+
+tr:hover td {
+  background-color: #f6f8fa;
+  border-color: #f6f8fa;
+  cursor: pointer;
 }
