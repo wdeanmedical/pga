@@ -47,16 +47,23 @@ class ProviderForm extends Component {
   }
 
   submitForm = () => {
-    const newPlayer = {
+    const { addPlayer, updatePlayer, formMode } = this.props
+
+    const player = {
       firstName: this.firstName.value.trim(),
       lastName: this.lastName.value.trim(),
       score: +this.score.value,
+      id: this.props.player.id,
     }
-    const { addPlayer } = this.props
 
     if (this.validateForm()) {
-      console.log(`submitForm() addPlayer(${JSON.stringify(newPlayer)})`)
-      addPlayer(newPlayer)
+      if (formMode === Constants.ADD) {
+        console.log(`submitForm() addPlayer(${JSON.stringify(player)})`)
+        addPlayer(player)
+      } else if (formMode === Constants.EDIT) {
+        console.log(`submitForm() updatePlayer(${JSON.stringify(player)})`)
+        updatePlayer(player)
+      }
 
       this.firstName.value = ''
       this.lastName.value = ''
@@ -143,12 +150,14 @@ ProviderForm.propTypes = {
   formMode: PropTypes.string,
   player: PropTypes.object,
   addPlayer: PropTypes.func,
+  updatePlayer: PropTypes.func,
 }
 
 ProviderForm.defaultProps = {
   formMode: Constants.ADD,
   player: {},
   addPlayer: undefined,
+  updatePlayer: undefined,
 }
 
 export default connect(

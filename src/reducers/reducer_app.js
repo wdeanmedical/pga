@@ -47,10 +47,30 @@ const addToLeaderboard = (state, action) => {
   }
 }
 
+const updateLeaderboard = (state, action) => {
+  console.log(`reducer  updateLeaderboard() ${JSON.stringify(action.payload)})`)
+  const { firstName, lastName, score, id } = action.payload
+  const { leaderboard } = state
+  const updatedLeaderboard = leaderboard
+
+  updatedLeaderboard.find((o, i) => {
+    if (o.id === id) {
+      updatedLeaderboard[i] = { firstName, lastName, score }
+    }
+  })
+
+  console.log('updatedLeaderboard', updatedLeaderboard)
+  return {
+    ...state,
+    leaderboard: updatedLeaderboard,
+    updateTime: { updateTime: new Date() },
+  }
+}
+
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case UPDATE_PLAYER_SUCCESS:
-      return state
+      return updateLeaderboard(state, action)
     case DELETE_PLAYER_SUCCESS:
       return state
     case ADD_PLAYER_SUCCESS:
