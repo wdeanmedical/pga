@@ -14,29 +14,30 @@ const INITIAL_STATE = {
   formMode: Constants.ADD,
 }
 
+const scoreComparison = (a, b) => {
+  if (a.score < b.score) {
+    return -1
+  }
+  if (a.score > b.score) {
+    return 1
+  }
+  if (a.score === b.score) {
+    if (a.lastName < b.lastName) {
+      return -1
+    }
+    if (a.lastName > b.lastName) {
+      return 1
+    }
+  }
+  return 0
+}
+
 const addToLeaderboard = (state, action) => {
   console.log(`reducer  addToLeaderboard() ${JSON.stringify(action.payload)})`)
   const { firstName, lastName, score } = action.payload
   const { leaderboard, sequenceNumber } = state
   const sortedLeaderboard = leaderboard
   sortedLeaderboard.push({ id: sequenceNumber, firstName, lastName, score })
-  const scoreComparison = (a, b) => {
-    if (a.score < b.score) {
-      return -1
-    }
-    if (a.score > b.score) {
-      return 1
-    }
-    if (a.score === b.score) {
-      if (a.lastName < b.lastName) {
-        return -1
-      }
-      if (a.lastName > b.lastName) {
-        return 1
-      }
-    }
-    return 0
-  }
   sortedLeaderboard.sort(scoreComparison)
   console.log('sortedLeaderboard', sortedLeaderboard)
   return {
@@ -52,16 +53,17 @@ const updateLeaderboard = (state, action) => {
   const { firstName, lastName, score, id } = action.payload
   const { leaderboard } = state
   const updatedLeaderboard = leaderboard
-
   updatedLeaderboard.find((o, i) => {
     if (o.id === id) {
       updatedLeaderboard[i] = { firstName, lastName, score }
     }
   })
+  updatedLeaderboard.sort(scoreComparison)
 
   console.log('updatedLeaderboard', updatedLeaderboard)
   return {
     ...state,
+    formMode: Constants.ADD,
     leaderboard: updatedLeaderboard,
     updateTime: { updateTime: new Date() },
   }
