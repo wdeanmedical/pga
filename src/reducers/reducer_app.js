@@ -1,6 +1,8 @@
 import {
   PROVIDER_RESPONSE_SUCCESS,
   AMBI_RESPONSE_SUCCESS,
+  DELETE_PLAYER_SUCCESS,
+  UPDATE_PLAYER_SUCCESS,
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -44,6 +46,10 @@ const addToLeaderboard = (state, action) => {
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case UPDATE_PLAYER_SUCCESS:
+      return state
+    case DELETE_PLAYER_SUCCESS:
+      return state
     case PROVIDER_RESPONSE_SUCCESS:
       return addToLeaderboard(state, action)
     case AMBI_RESPONSE_SUCCESS:
