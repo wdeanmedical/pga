@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styles from '../css/forms/ProviderResponseForm.css'
+import styles from '../css/forms/LeaderboardForm.css'
 import * as actions from '../actions'
 
-class ProviderResponseForm extends Component {
+class LeaderboardForm extends Component {
   state = {}
 
   componentDidMount() {}
@@ -52,12 +52,12 @@ const mapStateToProps = state => {
   return { leaderboard, updateTime }
 }
 
-ProviderResponseForm.propTypes = {
+LeaderboardForm.propTypes = {
   leaderboard: PropTypes.arrayOf(PropTypes.object),
   editPlayer: PropTypes.func,
 }
 
-ProviderResponseForm.defaultProps = {
+LeaderboardForm.defaultProps = {
   leaderboard: [],
   editPlayer: undefined,
 }
@@ -65,4 +65,4 @@ ProviderResponseForm.defaultProps = {
 export default connect(
   mapStateToProps,
   actions
-)(ProviderResponseForm)
+)(LeaderboardForm)

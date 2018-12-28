@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as actions from '../actions'
 import * as Constants from '../constants/constants'
-import styles from '../css/forms/ProviderForm.css'
+import styles from '../css/forms/PlayerForm.css'
 
-class ProviderForm extends Component {
+class PlayerForm extends Component {
   state = {
     errors: {},
   }
@@ -149,7 +149,7 @@ const mapStateToProps = state => {
   return { player, formMode }
 }
 
-ProviderForm.propTypes = {
+PlayerForm.propTypes = {
   formMode: PropTypes.string,
   player: PropTypes.object,
   addPlayer: PropTypes.func,
@@ -157,7 +157,7 @@ ProviderForm.propTypes = {
   updatePlayer: PropTypes.func,
 }
 
-ProviderForm.defaultProps = {
+PlayerForm.defaultProps = {
   formMode: Constants.ADD,
   player: {},
   addPlayer: undefined,
@@ -168,4 +168,4 @@ ProviderForm.defaultProps = {
 export default connect(
   mapStateToProps,
   actions
-)(ProviderForm)
+)(PlayerForm)
