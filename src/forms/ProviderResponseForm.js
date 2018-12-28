@@ -10,9 +10,9 @@ class ProviderResponseForm extends Component {
   componentDidMount() {}
 
   handleRowClick = row => {
-    const { sendAmbiResponse } = this.props
+    const { editPlayer } = this.props
     console.log('row', row)
-    sendAmbiResponse(row)
+    editPlayer(row)
   }
 
   render() {
@@ -49,18 +49,18 @@ class ProviderResponseForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { providerResponse, leaderboard } = state.app
-  return { leaderboard, providerResponse }
+  const { updateTime, leaderboard } = state.app
+  return { leaderboard, updateTime }
 }
 
 ProviderResponseForm.propTypes = {
   leaderboard: PropTypes.arrayOf(PropTypes.object),
-  sendAmbiResponse: PropTypes.func,
+  editPlayer: PropTypes.func,
 }
 
 ProviderResponseForm.defaultProps = {
   leaderboard: [],
-  sendAmbiResponse: undefined,
+  editPlayer: undefined,
 }
 
 export default connect(

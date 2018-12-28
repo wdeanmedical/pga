@@ -1,20 +1,21 @@
 import * as Constants from '../constants/constants'
 import {
-  PROVIDER_RESPONSE_SUCCESS,
-  AMBI_RESPONSE_SUCCESS,
+  ADD_PLAYER_SUCCESS,
   DELETE_PLAYER_SUCCESS,
+  EDIT_PLAYER_SUCCESS,
   UPDATE_PLAYER_SUCCESS,
 } from '../actions/types'
 
 const INITIAL_STATE = {
-  providerResponse: null,
-  ambiResponse: {},
+  updateTime: null,
+  player: {},
   leaderboard: [],
   sequenceNumber: 1,
   formMode: Constants.ADD,
 }
 
 const addToLeaderboard = (state, action) => {
+  console.log(`reducer  addToLeaderboard() ${JSON.stringify(action.payload)})`)
   const { firstName, lastName, score } = action.payload
   const { leaderboard, sequenceNumber } = state
   const sortedLeaderboard = leaderboard
@@ -42,7 +43,7 @@ const addToLeaderboard = (state, action) => {
     ...state,
     sequenceNumber: sequenceNumber + 1,
     leaderboard: sortedLeaderboard,
-    providerResponse: { updateTime: new Date() },
+    updateTime: { updateTime: new Date() },
   }
 }
 
@@ -52,13 +53,13 @@ export default function(state = INITIAL_STATE, action) {
       return state
     case DELETE_PLAYER_SUCCESS:
       return state
-    case PROVIDER_RESPONSE_SUCCESS:
+    case ADD_PLAYER_SUCCESS:
       return addToLeaderboard(state, action)
-    case AMBI_RESPONSE_SUCCESS:
+    case EDIT_PLAYER_SUCCESS:
       console.log('action payload', action.payload)
       return {
         ...state,
-        ambiResponse: action.payload,
+        player: action.payload,
         formMode: Constants.EDIT,
       }
     default:

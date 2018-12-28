@@ -22,25 +22,6 @@
   margin-bottom: 20px;
 }
 
-.providerResponse {
-  margin-left: 20px;
-}
-
-.providerResponseTitle {
-  font-size: 13px;
-  color: var(--battleshipGrey);
-  margin-top: 13px;
-  margin-bottom: 18px;
-}
-
-.providerResponseItem {
-  font-family: 'Arial-BoldMT', sans-serif ;
-  font-size: 14px;
-  color: var(--ambiBlack);
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
-
 .responseForm {
   margin-left: 20px;
 }

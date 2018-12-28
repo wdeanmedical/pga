@@ -47,15 +47,16 @@ class ProviderForm extends Component {
   }
 
   submitForm = () => {
-    const providerResponse = {
+    const newPlayer = {
       firstName: this.firstName.value.trim(),
       lastName: this.lastName.value.trim(),
       score: +this.score.value,
     }
-    const { sendProviderResponse } = this.props
+    const { addPlayer } = this.props
 
     if (this.validateForm()) {
-      sendProviderResponse(providerResponse)
+      console.log(`submitForm() addPlayer(${JSON.stringify(newPlayer)})`)
+      addPlayer(newPlayer)
 
       this.firstName.value = ''
       this.lastName.value = ''
@@ -64,17 +65,17 @@ class ProviderForm extends Component {
   }
 
   render() {
-    const { ambiResponse, formMode } = this.props
+    const { player, formMode } = this.props
     const { errors } = this.state
 
-    if (Object.keys(ambiResponse).length > 0) {
-      this.firstName.value = ambiResponse.firstName
-      this.lastName.value = ambiResponse.lastName
-      this.score.value = +ambiResponse.score
+    if (Object.keys(player).length > 0) {
+      this.firstName.value = player.firstName
+      this.lastName.value = player.lastName
+      this.score.value = +player.score
     }
 
     console.log(`render() - this.props: ${JSON.stringify(this.props)}`)
-    console.log(`render() - ambiResponse: ${JSON.stringify(ambiResponse)}`)
+    console.log(`render() - player: ${JSON.stringify(player)}`)
 
     return (
       <div className={styles.root}>
@@ -132,21 +133,22 @@ class ProviderForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { ambiResponse, formMode } = state.app
+  const { player, formMode } = state.app
   console.log('mapStateToProps formMode', formMode)
-  return { ambiResponse, formMode }
+  console.log('mapStateToProps player', player)
+  return { player, formMode }
 }
 
 ProviderForm.propTypes = {
   formMode: PropTypes.string,
-  ambiResponse: PropTypes.object,
-  sendProviderResponse: PropTypes.func,
+  player: PropTypes.object,
+  addPlayer: PropTypes.func,
 }
 
 ProviderForm.defaultProps = {
   formMode: Constants.ADD,
-  ambiResponse: {},
-  sendProviderResponse: undefined,
+  player: {},
+  addPlayer: undefined,
 }
 
 export default connect(

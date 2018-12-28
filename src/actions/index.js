@@ -1,21 +1,23 @@
 import {
-  PROVIDER_RESPONSE_SUCCESS,
-  AMBI_RESPONSE_SUCCESS,
+  ADD_PLAYER_SUCCESS,
   DELETE_PLAYER_SUCCESS,
+  EDIT_PLAYER_SUCCESS,
   UPDATE_PLAYER_SUCCESS,
 } from './types'
 
-export function sendProviderResponse(response) {
+export function addPlayer(newPlayer) {
+  console.log(`action  addPlayer(${JSON.stringify(newPlayer)})`)
   return {
-    type: PROVIDER_RESPONSE_SUCCESS,
-    payload: response,
+    type: ADD_PLAYER_SUCCESS,
+    payload: newPlayer,
   }
 }
 
-export function sendAmbiResponse(response) {
+export function editPlayer(player) {
+  console.log(`action  editPlayer(${JSON.stringify(player)})`)
   return {
-    type: AMBI_RESPONSE_SUCCESS,
-    payload: response,
+    type: EDIT_PLAYER_SUCCESS,
+    payload: player,
   }
 }
 
