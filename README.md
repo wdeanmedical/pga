@@ -9,8 +9,10 @@
 > yarn start
 ```
 
-<br>
+#### Live Instance:
+<a href="https://wdeanmedical.com/pga-demo/" target="_blank">https://wdeanmedical.com/pga-demo/</a>
 
 #### Application in action:
+![alt text](http://g.recordit.co/fNNKXBiyff.gif "Application in action")
 
-![alt text](http://g.recordit.co/toKjqcMvhu.gif "Application in action")
+
