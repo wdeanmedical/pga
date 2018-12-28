@@ -6,9 +6,6 @@ import styles from '../css/forms/ProviderForm.css'
 
 class ProviderForm extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    score: null,
     message: 'enter player details:',
     title: 'add player',
     errors: {},
@@ -21,7 +18,7 @@ class ProviderForm extends Component {
     if (!pattern.test(e.target.value)) {
       e.target.value = e.target.value.replace(/[^0-9]/g, '')
     }
-    this.setState({ score: +e.target.value })
+    this.score.value = +e.target.value
   }
 
   validateForm = () => {
@@ -29,22 +26,20 @@ class ProviderForm extends Component {
       errors: {},
     })
 
-    const { firstName, lastName, score } = this.state
-
     const errors = {}
     let isValid = true
 
-    if (firstName.trim().length < 1) {
+    if (this.firstName.value.trim().length < 1) {
       isValid = false
       errors.firstName = 'enter a valid first name'
     }
 
-    if (lastName.trim().length < 1) {
+    if (this.lastName.value.trim().length < 1) {
       isValid = false
       errors.lastName = 'enter a valid last name'
     }
 
-    if (score < 1 || score > 100) {
+    if (this.score.value < 1 || this.score.value > 100) {
       isValid = false
       errors.score = 'enter a whole number between 1 and 100'
     }
@@ -53,16 +48,21 @@ class ProviderForm extends Component {
   }
 
   submitForm = () => {
-    const { firstName, lastName, score } = this.state
-    const providerResponse = { firstName, lastName, score }
+    const providerResponse = {
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      score: +this.score.value,
+    }
     const { sendProviderResponse } = this.props
 
     if (this.validateForm()) {
       sendProviderResponse(providerResponse)
+
+      this.firstName.value = ''
+      this.lastName.value = ''
+      this.score.value = ''
+
       this.setState({
-        firstName: '',
-        lastName: '',
-        score: '',
         title: 'player added',
         message: '',
       })
@@ -71,7 +71,14 @@ class ProviderForm extends Component {
 
   render() {
     const { ambiResponse } = this.props
-    const { title, message, firstName, lastName, score, errors } = this.state
+
+    if (Object.keys(ambiResponse).length > 0) {
+      this.firstName.value = ambiResponse.firstName
+      this.lastName.value = ambiResponse.lastName
+      this.score.value = +ambiResponse.score
+    }
+
+    const { title, message, errors } = this.state
 
     console.log(`render() - this.props: ${JSON.stringify(this.props)}`)
     console.log(`render() - ambiResponse: ${JSON.stringify(ambiResponse)}`)
@@ -87,8 +94,7 @@ class ProviderForm extends Component {
             maxLength="30"
             className={styles.formItemInput}
             placeholder="enter first name"
-            value={firstName}
-            onChange={e => this.setState({ firstName: e.target.value })}
+            ref={input => (this.firstName = input)}
           />
           <div className={styles.errorMessage}>{errors.firstName}</div>
         </div>
@@ -99,8 +105,7 @@ class ProviderForm extends Component {
             maxLength="30"
             className={styles.formItemInput}
             placeholder="enter last name"
-            value={lastName}
-            onChange={e => this.setState({ lastName: e.target.value })}
+            ref={input => (this.lastName = input)}
           />
           <div className={styles.errorMessage}>{errors.lastName}</div>
         </div>
@@ -110,7 +115,7 @@ class ProviderForm extends Component {
             type="text"
             className={styles.formItemInput}
             placeholder="enter score (1-100)"
-            value={score}
+            ref={input => (this.score = input)}
             onChange={e => this.processScoreInput(e)}
           />
           <div className={styles.errorMessage}>{errors.score}</div>
@@ -129,8 +134,6 @@ class ProviderForm extends Component {
 const mapStateToProps = state => {
   const { ambiResponse } = state.app
   console.log('mapStateToProps ambiResponse', ambiResponse)
-  if (Object.keys(ambiResponse).length > 0) {
-  }
   return { ambiResponse }
 }
 
