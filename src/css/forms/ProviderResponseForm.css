@@ -77,3 +77,19 @@
 .rejectButtonSubmitted {
   content:url("../../assets/images/thumbs-down-button-submitted.png");
 }
+
+.th {
+  text-align: left;
+}
+
+.name {
+  text-align: left;
+}
+
+.score {
+  text-align: right;
+}
+
+th, td {
+  padding-right: 20px;
+}

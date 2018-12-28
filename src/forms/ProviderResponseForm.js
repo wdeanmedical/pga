@@ -17,7 +17,24 @@ class ProviderResponseForm extends Component {
         {leaderboard.length === 0 && (
           <div className={styles.subtitle}>currently empty...</div>
         )}
-        {leaderboard.length > 0 && <div>{JSON.stringify(leaderboard)}</div>}
+        {leaderboard.length > 0 && (
+          <table>
+            <thead>
+              <th className={styles.th}>name</th>
+              <th className={styles.th}>score</th>
+            </thead>
+            <tbody>
+              {leaderboard.map(row => (
+                <tr>
+                  <td className={styles.name}>
+                    {row.lastName}, {row.firstName}
+                  </td>
+                  <td className={styles.score}>{row.score}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     )
   }
