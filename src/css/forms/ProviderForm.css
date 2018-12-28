@@ -68,6 +68,7 @@ input[type="text"]:disabled {
 .formControls {
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .formSubmitButton {
@@ -115,5 +116,6 @@ input[type="text"]:disabled {
   font-size: 12px;
   color: var(--ambiErrorColor);
   min-height: 18px;
+  margin-right: 2px;
 }
 

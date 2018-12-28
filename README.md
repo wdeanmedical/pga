@@ -1,4 +1,4 @@
-# Ambi Candy Store
+# PGA Asessment
 
 ### Getting Started
 
