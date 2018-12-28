@@ -10,7 +10,7 @@
 ```
 
 #### Live Instance:
-<a href="https://wdeanmedical.com/pga-demo/" target="_blank">https://wdeanmedical.com/pga-demo/</a>
+<a href="https://wdeanmedical.com/pga-demo/" target="_blank" rel="noopener noreferrer">https://wdeanmedical.com/pga-demo/</a>
 
 #### Application in action:
 ![alt text](http://g.recordit.co/fNNKXBiyff.gif "Application in action")
