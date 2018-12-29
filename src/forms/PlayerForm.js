@@ -151,7 +151,12 @@ const mapStateToProps = state => {
 
 PlayerForm.propTypes = {
   formMode: PropTypes.string,
-  player: PropTypes.object,
+  player: PropTypes.shape({
+    id: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    score: PropTypes.number,
+  }),
   addPlayer: PropTypes.func,
   deletePlayer: PropTypes.func,
   updatePlayer: PropTypes.func,
