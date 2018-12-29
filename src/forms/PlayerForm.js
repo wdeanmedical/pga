@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import cn from 'classnames'
 import * as actions from '../actions'
 import * as Constants from '../constants/constants'
 import styles from '../css/forms/PlayerForm.css'
@@ -46,6 +47,12 @@ class PlayerForm extends Component {
     return isValid
   }
 
+  clearForm = () => {
+    this.firstName.value = ''
+    this.lastName.value = ''
+    this.score.value = ''
+  }
+
   submitForm = () => {
     const { addPlayer, updatePlayer, formMode } = this.props
 
@@ -62,18 +69,20 @@ class PlayerForm extends Component {
       } else if (formMode === Constants.EDIT) {
         updatePlayer(player)
       }
-      this.firstName.value = ''
-      this.lastName.value = ''
-      this.score.value = ''
+      this.clearForm()
     }
+  }
+
+  cancelEditPlayer = () => {
+    const { cancelEditPlayer } = this.props
+    cancelEditPlayer(this.props.player.id)
+    this.clearForm()
   }
 
   deletePlayer = () => {
     const { deletePlayer } = this.props
     deletePlayer(this.props.player.id)
-    this.firstName.value = ''
-    this.lastName.value = ''
-    this.score.value = ''
+    this.clearForm()
   }
 
   render() {
@@ -128,14 +137,25 @@ class PlayerForm extends Component {
 
         <div className={styles.formControls}>
           {formMode === Constants.EDIT && (
-            <button
-              className={styles.formDeleteButton}
-              onClick={this.deletePlayer}
-            >
-              Delete
-            </button>
+            <div className={styles.editButtonGroup}>
+              <button
+                className={cn(styles.button, styles.formCancelButton)}
+                onClick={this.cancelEditPlayer}
+              >
+                Cancel
+              </button>
+              <button
+                className={cn(styles.button, styles.formDeleteButton)}
+                onClick={this.deletePlayer}
+              >
+                Delete
+              </button>
+            </div>
           )}
-          <button className={styles.formSubmitButton} onClick={this.submitForm}>
+          <button
+            className={cn(styles.button, styles.formSubmitButton)}
+            onClick={this.submitForm}
+          >
             Submit
           </button>
         </div>
@@ -158,6 +178,7 @@ PlayerForm.propTypes = {
     score: PropTypes.number,
   }),
   addPlayer: PropTypes.func,
+  cancelEditPlayer: PropTypes.func,
   deletePlayer: PropTypes.func,
   updatePlayer: PropTypes.func,
 }
@@ -166,6 +187,7 @@ PlayerForm.defaultProps = {
   formMode: Constants.ADD,
   player: {},
   addPlayer: undefined,
+  cancelEditPlayer: undefined,
   deletePlayer: undefined,
   updatePlayer: undefined,
 }

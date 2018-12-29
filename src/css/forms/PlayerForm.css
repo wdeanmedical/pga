@@ -65,23 +65,33 @@ input[type="text"]:disabled {
   margin-top: 10px;
 }
 
-.formSubmitButton {
+.editButtonGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 145px;
+  margin-right: 5px;
+}
+
+.button {
   font-family: 'Arial-BoldMT', sans-serif ;
   font-size: 12px;
-  color: white;
-  padding: 5px 25px 5px 25px;
-  background-color: var(--ambiAzureColor);
+  padding: 5px 15px 5px 15px;
   border-radius: 8px;
 }
 
-.formDeleteButton {
-  font-family: 'Arial-BoldMT', sans-serif ;
-  font-size: 12px;
+.formSubmitButton {
   color: white;
-  padding: 5px 25px 5px 25px;
+  background-color: var(--ambiAzureColor);
+}
+
+.formDeleteButton {
+  color: white;
   background-color: var(--ambiErrorColor);
-  border-radius: 8px;
-  margin-right: 5px;
+}
+
+.formCancelButton {
+  color: var(--ambiBlack);
+  background-color: white;
 }
 
 .title {

@@ -3,6 +3,7 @@ import {
   ADD_PLAYER_SUCCESS,
   DELETE_PLAYER_SUCCESS,
   EDIT_PLAYER_SUCCESS,
+  CANCEL_EDIT_PLAYER_SUCCESS,
   UPDATE_PLAYER_SUCCESS,
 } from '../actions/types'
 
@@ -98,6 +99,8 @@ export default function(state = INITIAL_STATE, action) {
         player: action.payload,
         formMode: Constants.EDIT,
       }
+    case CANCEL_EDIT_PLAYER_SUCCESS:
+      return { ...state, formMode: Constants.ADD }
     default:
       return state
   }

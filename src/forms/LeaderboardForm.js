@@ -46,7 +46,7 @@ class LeaderboardForm extends Component {
                         row.id === selectedPlayerId
                           ? {
                               backgroundColor: '#f6f8fa',
-                              borderColor: '#f6f8fa;',
+                              borderColor: '#f6f8fa',
                             }
                           : {}
                       }
@@ -59,7 +59,7 @@ class LeaderboardForm extends Component {
                         row.id === selectedPlayerId
                           ? {
                               backgroundColor: '#f6f8fa',
-                              borderColor: '#f6f8fa;',
+                              borderColor: '#f6f8fa',
                             }
                           : {}
                       }

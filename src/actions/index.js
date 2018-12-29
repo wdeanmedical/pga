@@ -2,6 +2,7 @@ import {
   ADD_PLAYER_SUCCESS,
   DELETE_PLAYER_SUCCESS,
   EDIT_PLAYER_SUCCESS,
+  CANCEL_EDIT_PLAYER_SUCCESS,
   UPDATE_PLAYER_SUCCESS,
 } from './types'
 
@@ -15,6 +16,13 @@ export function addPlayer(newPlayer) {
 export function editPlayer(player) {
   return {
     type: EDIT_PLAYER_SUCCESS,
+    payload: player,
+  }
+}
+
+export function cancelEditPlayer(player) {
+  return {
+    type: CANCEL_EDIT_PLAYER_SUCCESS,
     payload: player,
   }
 }

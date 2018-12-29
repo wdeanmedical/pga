@@ -41,24 +41,6 @@
   margin-left: 25px;
 }
 
-.acceptButton:hover {
-  content:url("../../assets/images/thumbs-up-button-hover.png");
-  cursor: pointer;
-}
-
-.acceptButtonSubmitted {
-  content:url("../../assets/images/thumbs-up-button-submitted.png");
-}
-
-.rejectButton:hover {
-  content:url("../../assets/images/thumbs-down-button-hover.png");
-  cursor: pointer;
-}
-
-.rejectButtonSubmitted {
-  content:url("../../assets/images/thumbs-down-button-submitted.png");
-}
-
 .th {
   text-align: left;
   padding-left: 2px;
