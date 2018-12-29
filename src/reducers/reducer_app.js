@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   formMode: Constants.ADD,
 }
 
-const scoreComparison = (a, b) => {
+const playerComparison = (a, b) => {
   if (a.score < b.score) {
     return -1
   }
@@ -38,7 +38,7 @@ const addToLeaderboard = (state, action) => {
   const { leaderboard, sequenceNumber } = state
   const sortedLeaderboard = leaderboard
   sortedLeaderboard.push({ id: sequenceNumber, firstName, lastName, score })
-  sortedLeaderboard.sort(scoreComparison)
+  sortedLeaderboard.sort(playerComparison)
   return {
     ...state,
     sequenceNumber: sequenceNumber + 1,
@@ -57,7 +57,7 @@ const updateLeaderboard = (state, action) => {
       updatedLeaderboard[i] = { id, firstName, lastName, score }
     }
   })
-  updatedLeaderboard.sort(scoreComparison)
+  updatedLeaderboard.sort(playerComparison)
 
   return {
     ...state,
