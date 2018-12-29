@@ -53,7 +53,7 @@ const updateLeaderboard = (state, action) => {
 
   updatedLeaderboard.find((o, i) => {
     if (o.id === id) {
-      updatedLeaderboard[i] = { firstName, lastName, score }
+      updatedLeaderboard[i] = { id, firstName, lastName, score }
     }
   })
   updatedLeaderboard.sort(scoreComparison)
